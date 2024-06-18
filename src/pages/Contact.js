@@ -1,12 +1,23 @@
 import React from 'react';
+import Navbar from '../components/Navbar'; // Assurez-vous que le chemin d'accès est correct
+import styled from 'styled-components';
 
-function Contact() {
+// Si vous avez des styles spécifiques pour la page, ajoutez-les ici
+const ContactPage = styled.div`
+  padding-top: 100px; // Ajoutez un padding pour ne pas que le contenu soit caché par la Navbar fixe
+`;
+
+const Contact = () => {
   return (
-    <div>
-      <h1>Page d'Accueil</h1>
-      <p>Bienvenue sur notre site d'e-commerce dédié aux accessoires de sports de combat.</p>
-    </div>
+    <>
+      <Navbar />
+      <ContactPage>
+        <h1>Contactez-nous</h1>
+        <p>Veuillez remplir le formulaire ci-dessous pour nous envoyer un message.</p>
+        {/* Formulaires et autres éléments de contenu ici */}
+      </ContactPage>
+    </>
   );
-}
+};
 
 export default Contact;

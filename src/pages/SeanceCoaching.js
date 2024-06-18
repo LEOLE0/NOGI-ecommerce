@@ -1,12 +1,22 @@
 import React from 'react';
+import Navbar from '../components/Navbar'; // Assurez-vous que le chemin d'accès est correct
+import styled from 'styled-components';
 
-function SeanceCoaching() {
+const CoachingPage = styled.div`
+  padding-top: 100px; // Ajustez selon la hauteur de votre Navbar
+  text-align: center;
+`;
+
+const SeanceCoaching = () => {
   return (
-    <div>
-      <h1>Page d'Accueil</h1>
-      <p>Bienvenue sur notre site d'e-commerce dédié aux accessoires de sports de combat.</p>
-    </div>
+    <>
+      <Navbar />
+      <CoachingPage>
+        <h1>Séances de Coaching</h1>
+        <p>Participez à nos séances de coaching personnalisées pour atteindre vos objectifs fitness plus rapidement.</p>
+      </CoachingPage>
+    </>
   );
-}
+};
 
 export default SeanceCoaching;

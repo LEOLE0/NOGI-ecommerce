@@ -4,6 +4,7 @@ import StyledButton from "./StyledButton"; // Assure-toi que le chemin est corre
 import bgImage from "../assets/bg-welcome.jpg";
 import 'aos/dist/aos.css'; // Assure-toi que les styles de AOS sont importés si ce n'est pas déjà fait globalement
 import AOS from 'aos';
+import { Link } from 'react-router-dom';
 
 const Section = styled.section`
   background: url(${bgImage}) center center/cover no-repeat;
@@ -58,12 +59,11 @@ function WelcomeSection() {
       <Subtitle data-aos="fade-down" data-aos-delay="800">
         Le meilleur équipement pour vos entraînements et compétitions.
       </Subtitle>
-      <StyledButton
-        onClick={() => (window.location.href = "/inscription-connexion")}
-        data-aos="slide-down" data-aos-delay="1100"
-      >
+      <Link to="/inscription-connexion"> 
+      <StyledButton>
         Connexion / Inscription
       </StyledButton>
+      </Link>
     </Section>
   );
 }

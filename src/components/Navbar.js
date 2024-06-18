@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MyIconComponent from './MyIconComponent';
 import logo from '../assets/logo.png';
+import { UserContext } from '../context/UserContext';
+import MenuBurger from './BurgerMenu';
+import Sidebar from './Sidebar';
+import Icones from './Icones'; 
 
 const Nav = styled.nav`
-  position: ;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(11,15,38,0.99);
-  
+  background: rgba(11, 15, 38, 1);
   display: flex;
+  align-items: center;
   z-index: 10;
- 
 `;
 
 const Logo = styled.img`
   height: 90px;
-  
-  
 `;
 
 const Section = styled.div`
@@ -28,26 +29,40 @@ const Section = styled.div`
   justify-content: center;
 `;
 
+const LeftSection = styled(Section)`
+  justify-content: flex-start;
+  visibility: ${({ isVisible }) => isVisible ? 'visible' : 'hidden'};  // Gère la visibilité sans retirer l'espace
+`;
+
 const RightSection = styled(Section)`
   justify-content: flex-end;
-  padding-right: 10px;  // Ajoute un peu d'espace pour éviter que l'icône ne touche le bord
-  
 `;
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+  const { user } = useContext(UserContext);
+
   return (
     <Nav>
-      <Section />  {/* Section vide pour équilibrer le logo au centre */}
+      <LeftSection isVisible={user}>
+        <MenuBurger toggle={toggle} isOpen={isOpen} />
+      </LeftSection>
       <Section>
         <Logo src={logo} alt="NOGI Logo" />
       </Section>
       <RightSection>
-        <Link to="/inscription-connexion">  {/* Lien vers la page d'inscription/connexion */}
-          <MyIconComponent />
-        </Link>
+        {user ? (
+          <Icones />
+        ) : (
+          <Link to="/inscription-connexion">
+            <MyIconComponent />
+          </Link>
+        )}
       </RightSection>
+      <Sidebar isOpen={isOpen} toggle={toggle} />
     </Nav>
   );
-}
+};
 
 export default Navbar;

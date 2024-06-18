@@ -1,12 +1,22 @@
 import React from 'react';
+import Navbar from '../components/Navbar'; // Assurez-vous que le chemin d'accès est correct
+import styled from 'styled-components';
 
-function Protection() {
+const ProductsPage = styled.div`
+  padding-top: 100px; // Ajustez selon la hauteur de votre Navbar
+  text-align: center;
+`;
+
+const Protection = () => {
   return (
-    <div>
-      <h1>Page d'Accueil</h1>
-      <p>Bienvenue sur notre site d'e-commerce dédié aux accessoires de sports de combat.</p>
-    </div>
+    <>
+      <Navbar />
+      <ProductsPage>
+        <h1>Produits de Protection</h1>
+        <p>Découvrez notre gamme de produits de protection dédiés à votre sécurité et confort.</p>
+      </ProductsPage>
+    </>
   );
-}
+};
 
 export default Protection;

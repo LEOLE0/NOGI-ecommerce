@@ -1,11 +1,13 @@
-import React from "react";
-import GlobalStyle from "../components/GlobalStyle";
-import Navbar from "../components/Navbar";
-import VideoBanner from "../components/VideoBanner";
-import WelcomeSection from "../components/WelcomeSection";
-import AboutSection from "../components/AboutSection";
-import NewsSection from "../components/NewsSection";
-// Importer d'autres composants si nécessaire
+import React from 'react';
+import GlobalStyle from '../components/GlobalStyle';
+import Navbar from '../components/Navbar';
+import VideoBanner from '../components/VideoBanner';
+import WelcomeSection from '../components/WelcomeSection';
+import AboutSection from '../components/AboutSection';
+import NewsSection from '../components/NewsSection';
+import ServiceSection from '../components/ServiceSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
 
 function Accueil() {
   return (
@@ -17,8 +19,10 @@ function Accueil() {
         <WelcomeSection />
         <AboutSection />
         <NewsSection />
+        <ContactSection />
+        <ServiceSection />
+        <Footer />
 
-        {/* Ici, tu peux ajouter d'autres sections ou composants spécifiques à la page d'accueil */}
       </div>
     </>
   );

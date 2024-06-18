@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import 'aos/dist/aos.css'; // Assure que les styles de AOS sont bien importés
-import bgImage from "../assets/bg-news.jpg"; // Assure-toi que le chemin vers l'image est correct
+import 'aos/dist/aos.css'; // 
+import bgImage from "../assets/bg-news.jpg"; 
+import StyledButton from "./StyledButton";
 
 
 
@@ -13,18 +14,20 @@ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
   align-items: center;
   justify-content: center;
   min-height: 90vh;
+//   background: rgba(11,15,38);
   color: #ffffff;
   padding-left: 60px;
 `;
 
 const LeftColumn = styled.div`
- background: rgba(11,15,38,0.9);
-  border-radius: 30px 0px;
+ background: rgba(11,15,38,1);
+  border-radius: 390px 0px;
   flex: 1;
-  padding: 10px;
+  padding: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 `;
 
 const RightColumn = styled.div`
@@ -58,7 +61,16 @@ const News = () => {
           récente et l'introduction de nouvelles gammes de produits. Ne manquez
           pas nos séances de coaching exclusives, conçues pour vous aider à 
           exceller dans vos disciplines de combat.
-        </Content>
+        </Content><br />
+        <StyledButton 
+        padding="20px"
+        fontSize="14px"
+        width="200px"
+        onClick={() => (window.location.href = "/seance-coaching")}
+        data-aos="slide-down" data-aos-delay="1100"
+        >
+        En savoir plus
+      </StyledButton>
       </LeftColumn>
       <RightColumn data-aos="fade-left">
         {/* Le conteneur de droite contient l'image, animée pour apparaître de la droite */}

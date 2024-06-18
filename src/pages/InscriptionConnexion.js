@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importe useNavigate
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Inscription from "../components/Inscription";
@@ -35,7 +34,6 @@ const TabContent = styled.div`
 
 function InscriptionConnexion() {
   const [activeTab, setActiveTab] = useState("inscription");
-  const navigate = useNavigate(); // Crée une instance de navigate
 
   return (
     <div>
@@ -45,7 +43,7 @@ function InscriptionConnexion() {
         <Tab onClick={() => setActiveTab("connexion")} active={activeTab === "connexion"}>Connexion</Tab>
       </Tabs>
       <TabContent>
-        {activeTab === "inscription" ? <Inscription onSwitchTab={setActiveTab} navigate={navigate} /> : <Connexion navigate={navigate} />}
+        {activeTab === "inscription" ? <Inscription onSwitchTab={setActiveTab} /> : <Connexion />}
       </TabContent>
       <Footer />
     </div>

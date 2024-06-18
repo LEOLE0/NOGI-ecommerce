@@ -1,28 +1,27 @@
-// src/pages/HomePage.js
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 import Navbar from '../components/Navbar';
-import styled from 'styled-components';
-
-const WelcomeMessage = styled.h1`
-  color: #0b0f26;
-  text-align: center;
-  margin-top: 120px;
-`;
+import Footer from '../components/Footer';
 
 const HomePage = () => {
-  const user = useSelector(state => state.user.user);
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   return (
-    <div>
+    <>
       <Navbar />
-      {user && (
-        <WelcomeMessage>Bienvenue {user.firstName} {user.lastName}</WelcomeMessage>
-      )}
-      <div>
-        <h1>Explorez nos produits et services!</h1>
+      <div style={{ textAlign: 'center', marginTop: '100px' }}>
+        <h1>Bienvenue, {user.displayName}!</h1>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

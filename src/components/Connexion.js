@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { auth } from '../firebase-config';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import StyledButton from './StyledButton';
 import { useNavigate } from 'react-router-dom';
-import { setUser } from '../redux/actions/userActions';
+import { UserContext } from '../context/UserContext';
 
 const Form = styled.form`
   font-family: 'Inter', sans-serif;
@@ -50,27 +49,27 @@ const ButtonDiv = styled.div`
 `;
 
 function Connexion() {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        dispatch(setUser({
-          firstName: user.displayName.split(' ')[0], // Assumes the displayName is in "FirstName LastName" format
-          lastName: user.displayName.split(' ')[1],
-          email: user.email
-        }));
-        navigate('/home'); // Redirige vers HomePage après une connexion réussie
-      } catch (error) {
-        console.error("Erreur de connexion:", error);
-        alert("Erreur lors de la connexion: " + error.message);
-      }
-    };
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      setUser({
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName || '', // Assumes the displayName is in "FirstName LastName" format
+      });
+      navigate('/home'); // Redirige vers HomePage après une connexion réussie
+    } catch (error) {
+      console.error("Erreur de connexion:", error);
+      alert("Erreur lors de la connexion: " + error.message);
+    }
+  };
 
   return (
     <Form onSubmit={handleSubmit}>

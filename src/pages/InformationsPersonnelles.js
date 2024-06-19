@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { UserContext } from '../context/UserContext';
-import Navbar from '../components/Navbar'; // Assurez-vous que le chemin d'accès est correct
+import Navbar from '../components/Navbar'; 
 import styled from 'styled-components';
+import ServiceSection from '../components/ServiceSection';
+import Footer from '../components/Footer';
 
 const PersonalInfoPage = styled.div`
   padding-top: 100px; // Ajustez en fonction de la hauteur de votre Navbar
@@ -31,6 +33,8 @@ const InformationsPersonnelles = () => {
         <h1>Informations Personnelles</h1>
         <button onClick={handleLogout}>Déconnexion</button>
       </PersonalInfoPage>
+      <ServiceSection />
+      <Footer />
     </>
   );
 };

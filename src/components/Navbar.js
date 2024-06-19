@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import MyIconComponent from './MyIconComponent';
 import logo from '../assets/logo.png';
 import MenuBurger from './BurgerMenu';
@@ -67,10 +68,24 @@ const Button = styled(Link)`
   }
 `;
 
+const CartIndicator = styled.div`
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 50%;
+  padding: 0.2em 0.6em;
+  font-size: 0.9em;
+  font-weight: bold;
+  font-family: roboto, sans serif;
+`;
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const { user } = useContext(UserContext);
+  const { cart } = useCart();
 
   return (
     <Nav>
@@ -99,6 +114,7 @@ const Navbar = () => {
                 <circle r="1" cy="21" cx="20"></circle>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
+              {cart.length > 0 && <CartIndicator>{cart.length}</CartIndicator>}
             </Button>
           </ButtonContainer>
         ) : (

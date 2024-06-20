@@ -1,21 +1,51 @@
-import React from 'react';
-import Navbar from '../components/Navbar'; // Assurez-vous que le chemin d'accès est correct
-import styled from 'styled-components';
 
-// Si vous avez des styles spécifiques pour la page, ajoutez-les ici
-const ContactPage = styled.div`
-  padding-top: 100px; // Ajoutez un padding pour ne pas que le contenu soit caché par la Navbar fixe
+
+import React from 'react';
+import styled from 'styled-components';
+import Navbar from '../components/Navbar';
+import ContactForm from '../components/ContactForm'; 
+import ServiceSection from '../components/ServiceSection';
+import Footer from '../components/Footer';
+
+
+const Section = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: white;
+  padding: 230px 50px;
+`;
+
+const LeftColumn = styled.div`
+  flex: 1;
+  padding: 2rem;
+`;
+
+const RightColumn = styled.div`
+  flex: 1;
+  padding: 2rem;
+`;
+
+const Title = styled.h2`
+  font-family: 'Inter', sans-serif;
+  font-size: 4.5rem;
 `;
 
 const Contact = () => {
   return (
     <>
       <Navbar />
-      <ContactPage>
-        <h1>Contactez-nous</h1>
-        <p>Veuillez remplir le formulaire ci-dessous pour nous envoyer un message.</p>
-        {/* Formulaires et autres éléments de contenu ici */}
-      </ContactPage>
+      <Section>
+        <LeftColumn data-aos="fade-right" data-aos-delay="50">
+          <Title>Une requête? Faites-nous savoir !</Title>
+        </LeftColumn>
+        <RightColumn data-aos="fade-left" data-aos-delay="150">
+          <ContactForm />
+        </RightColumn>
+      </Section>
+      <ServiceSection />
+      <Footer />
     </>
   );
 };

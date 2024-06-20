@@ -53,21 +53,17 @@ function ContactForm() {
   const [message, setMessage] = useState('');
   const [showNotification, setShowNotification] = useState(false);
 
-  // Fonction pour valider l'email
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
-  // Gestionnaire de soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Vérifie les champs avant l'envoi
     if (name.length < 3 || !validateEmail(email) || !message.trim()) {
       alert('Assurez-vous que tous les champs requis sont correctement remplis.');
       return;
     }
 
     try {
-      // Ajout des données dans la collection Firestore
       await addDoc(collection(db, "contacts"), {
         name,
         email,
@@ -76,13 +72,12 @@ function ContactForm() {
         timestamp: new Date()
       });
 
-      // Notification de succès et réinitialisation des champs du formulaire
       setShowNotification(true);
       setName('');
       setEmail('');
       setSubject('');
       setMessage('');
-      setTimeout(() => setShowNotification(false), 3000); // Fermer la notification après 3 secondes
+      setTimeout(() => setShowNotification(false), 3000);
     } catch (error) {
       console.error("Erreur lors de l'envoi du formulaire : ", error);
       alert('Erreur lors de l\'envoi du formulaire.');

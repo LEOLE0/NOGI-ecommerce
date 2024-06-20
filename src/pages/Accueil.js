@@ -5,8 +5,8 @@ import VideoBanner from '../components/VideoBanner';
 import WelcomeSection from '../components/WelcomeSection';
 import AboutSection from '../components/AboutSection';
 import NewsSection from '../components/NewsSection';
-import ServiceSection from '../components/ServiceSection';
 import ContactSection from '../components/ContactSection';
+import ServiceSection from '../components/ServiceSection';
 import Footer from '../components/Footer';
 
 function Accueil() {
@@ -22,7 +22,6 @@ function Accueil() {
         <ContactSection />
         <ServiceSection />
         <Footer />
-
       </div>
     </>
   );

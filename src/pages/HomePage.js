@@ -25,6 +25,7 @@ const Banner = styled.div`
 `;
 
 const Section = styled.section`
+font-family: 'Inter', sans-serif;
   text-align: center;
   padding: 50px 20px;
 `;
@@ -33,7 +34,7 @@ const SectionTitle = styled.h2`
   font-size: 2.5rem;
   margin-bottom: 50px;
   color: rgba(11, 15, 38, 1)
-  font-family: 'Inter', sans-serif;
+  
 `;
 
 const Container = styled.div`

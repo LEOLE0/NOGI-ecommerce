@@ -11,6 +11,28 @@ const CartContainer = styled.div`
   font-family: 'Inter', sans-serif;
 `;
 
+const EmptyCartMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  text-align: center;
+  font-size: 2rem;
+  color: #555;
+`;
+
+const CartIcon = styled.div`
+  font-size: 3rem;
+  margin-bottom: 20px;
+
+  svg {
+    width: 50px;
+    height: 50px;
+    color: #555;
+  }
+`;
+
 const CartItem = styled.div`
   display: flex;
   justify-content: space-between;
@@ -76,7 +98,16 @@ const Cart = () => {
       <CartContainer>
         <h2>Votre Panier</h2>
         {cart.length === 0 ? (
-          <p>Votre panier est vide</p>
+          <EmptyCartMessage>
+            <CartIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle r="1" cy="21" cx="9"></circle>
+                <circle r="1" cy="21" cx="20"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </CartIcon>
+            <p>Votre panier est vide</p>
+          </EmptyCartMessage>
         ) : (
           <>
             {cart.map((product, index) => (

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import videoSource from "../assets/video.mp4";
+import videoSource from "../assets/video.mov";
 
 // const VideoContainer = styled.div`
 
